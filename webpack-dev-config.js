@@ -1,7 +1,8 @@
 /**
- * 开发模式下的 webpack 2.2.1 配置
+ * 开发模式下的 webpack 2.3.1 配置
  * 在整个项目开发过程中，几乎99%的时间都是在这个模式下进行的
  * 注意。两种模式的配置有较大差异！！
+ * webpack 2.0+官方配置地址 https://webpack.js.org/configuration/externals/
  */
 
 const webpack = require('webpack');
@@ -61,6 +62,10 @@ module.exports = {
         options:{
           limit:15000
         }
+      },
+      {
+        test:/\.css$/,
+        use:['style-loader','css-loader','postcss-loader']
       },
 
       /*公有样式*/

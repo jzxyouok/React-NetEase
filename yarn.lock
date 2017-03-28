@@ -4031,6 +4031,13 @@ postcss-ordered-values@^2.1.0:
     postcss "^5.0.4"
     postcss-value-parser "^3.0.1"
 
+postcss-pxtorem@^4.0.0:
+  version "4.0.0"
+  resolved "http://r.cnpmjs.org/postcss-pxtorem/download/postcss-pxtorem-4.0.0.tgz#530e529793ddb0e6a3e1f064d96173b747f789f2"
+  dependencies:
+    object-assign "^4.1.0"
+    postcss "^5.2.10"
+
 postcss-reduce-idents@^2.2.2:
   version "2.4.0"
   resolved "http://registry.npm.taobao.org/postcss-reduce-idents/download/postcss-reduce-idents-2.4.0.tgz#c2c6d20cc958284f6abfbe63f7609bf409059ad3"

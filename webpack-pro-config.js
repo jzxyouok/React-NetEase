@@ -2,6 +2,8 @@
  * 产品模式下的 webpack 2.2.1 配置
  *
  * 注意。两种模式的配置有较大差异！！
+ *
+ * webpack 2.0+官方配置地址 https://webpack.js.org/configuration/externals/
  */
 
 const path = require('path');
@@ -61,6 +63,10 @@ module.exports = {
           limit:15000
         }
       },
+      {
+        test:/\.css$/,
+        use:['style-loader','css-loader','postcss-loader']
+      },
 
       /*公有样式*/
       {
@@ -103,6 +109,13 @@ module.exports = {
         include: path.resolve(__dirname, 'src/js')
       }
     ]
+  },
+
+  // 引入外部库
+  // 适用于一些常用且体积较大的库，充分利用CDN加速，减轻服务器负担，降低加载时间！
+  // https://webpack.js.org/configuration/externals/
+  externals:{
+    moment: 'moment'
   },
 
   resolve: {
