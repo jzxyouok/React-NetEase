@@ -1,179 +1,101 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link
+  Link,
+  Redirect,
+  withRouter
 } from 'react-router-dom'
 
-// This example shows how to render two different screens
-// (or the same screen in a different context) at the same url,
-// depending on you got there.
-//
-// Click the colors and see them full screen, then "visit the
-// gallery" and click on the colors. Note the URL and the component
-// are the same as before but now we see them inside a modal
-// on top of the old screen.
+////////////////////////////////////////////////////////////
+// 1. Click the public page
+// 2. Click the protected page
+// 3. Log in
+// 4. Click the back button, note the URL each time
 
-class ModalSwitch extends React.Component {
+const AuthExample = () => (
+  <Router>
+    <div>
+      <AuthButton/>
+      <ul>
+        <li><Link to="/public">Public Page</Link></li>
+        <li><Link to="/protected">Protected Page</Link></li>
+      </ul>
+      <Route path="/public" component={Public}/>
+      <Route path="/login" component={Login}/>
+      <PrivateRoute path="/protected" component={Protected}/>
+    </div>
+  </Router>
+)
 
-  // We can pass a location to <Switch/> that will tell it to
-  // ignore the router's current location and use the location
-  // prop instead.
-  //
-  // We can also use "location state" to tell the app the user
-  // wants to go to `/images/2` in a modal, rather than as the
-  // main page, keeping the gallery visible behind it.
-  //
-  // Normally, `/images/2` wouldn't match the gallery at `/`.
-  // So, to get both screens to render, we can save the old
-  // location and pass it to Switch, so it will think the location
-  // is still `/` even though its `/images/2`.
-  previousLocation = this.props.location
+const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true
+    setTimeout(cb, 100) // fake async
+  },
+  signout(cb) {
+    this.isAuthenticated = false
+    setTimeout(cb, 100)
+  }
+}
 
-  componentWillUpdate(nextProps) {
-    const { location } = this.props
-    // set previousLocation if props.location is not modal
-    if (
-      nextProps.history.action !== 'POP' &&
-      (!location.state || !location.state.modal)
-    ) {
-      this.previousLocation = this.props.location
-    }
+const AuthButton = withRouter(({ history }) => (
+  fakeAuth.isAuthenticated ? (
+    <p>
+      Welcome! <button onClick={() => {
+      fakeAuth.signout(() => history.push('/'))
+    }}>Sign out</button>
+    </p>
+  ) : (
+    <p>You are not logged in.</p>
+  )
+))
+
+const PrivateRoute = ({ component, ...rest }) => (
+  <Route {...rest} render={props => (
+    fakeAuth.isAuthenticated ? (
+      React.createElement(component, props)
+    ) : (
+      <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }}/>
+    )
+  )}/>
+)
+
+const Public = () => <h3>Public</h3>
+const Protected = () => <h3>Protected</h3>
+
+class Login extends React.Component {
+  state = {
+    redirectToReferrer: false
+  }
+
+  login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState({ redirectToReferrer: true })
+    })
   }
 
   render() {
-    const { location } = this.props
-    const isModal = (
-      location.state &&
-      location.state.modal &&
-      this.previousLocation !== location // not initial render
-    );
+    const { from } = this.props.location.state || { from: { pathname: '/' } }
+    const { redirectToReferrer } = this.state
+
+    if (redirectToReferrer) {
+      return (
+        <Redirect to={from}/>
+      )
+    }
+
     return (
       <div>
-        <Switch location={isModal ? this.previousLocation : location}>
-          <Route exact path='/' component={Home}/>
-          <Route path='/gallery' component={Gallery}/>
-          <Route path='/img/:id' component={ImageView}/>
-        </Switch>
-        {isModal ? <Route path='/img/:id' component={Modal} /> : null}
+        <p>You must log in to view the page at {from.pathname}</p>
+        <button onClick={this.login}>Log in</button>
       </div>
     )
   }
 }
 
-const IMAGES = [
-  { id: 0, title: 'Dark Orchid', color: 'DarkOrchid' },
-  { id: 1, title: 'Lime Green', color: 'LimeGreen' },
-  { id: 2, title: 'Tomato', color: 'Tomato' },
-  { id: 3, title: 'Seven Ate Nine', color: '#789' },
-  { id: 4, title: 'Crimson', color: 'Crimson' }
-]
-
-const Thumbnail = ({ color }) =>
-  <div style={{
-    width: 50,
-    height: 50,
-    background: color
-  }}/>
-
-const Image = ({ color }) =>
-  <div style={{
-    width: '100%',
-    height: 400,
-    background: color
-  }}></div>
-
-const Home = () => (
-  <div>
-    <Link to='/gallery'>Visit the Gallery</Link>
-    <h2>Featured Images</h2>
-    <ul>
-      <li><Link to='/img/2'>Tomato</Link></li>
-      <li><Link to='/img/4'>Crimson</Link></li>
-    </ul>
-  </div>
-)
-
-const Gallery = () => (
-  <div>
-    {IMAGES.map(i => (
-      <Link
-        key={i.id}
-        to={{
-          pathname: `/img/${i.id}`,
-          // this is the trick!
-          state: { modal: true }
-        }}
-      >
-        <Thumbnail color={i.color} />
-        <p>{i.title}</p>
-      </Link>
-    ))}
-  </div>
-)
-
-const ImageView = ({ match }) => {
-  const image = IMAGES[parseInt(match.params.id, 10)]
-  if (!image) {
-    return <div>Image not found</div>
-  }
-
-  return (
-    <div>
-      <h1>{image.title}</h1>
-      <Image color={image.color} />
-    </div>
-  )
-}
-
-/**
- * @return {null}
- */
-const Modal = ({ match, history }) => {
-  const image = IMAGES[parseInt(match.params.id, 10)]
-  if (!image) {
-    return null
-  }
-  const back = (e) => {
-    e.stopPropagation()
-    history.goBack()
-  }
-  return (
-    <div
-      onClick={back}
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        background: 'rgba(0, 0, 0, 0.15)'
-      }}
-    >
-      <div className='modal' style={{
-        position: 'absolute',
-        background: '#fff',
-        top: 25,
-        left: '10%',
-        right: '10%',
-        padding: 15,
-        border: '2px solid #444'
-      }}>
-        <h1>{image.title}</h1>
-        <Image color={image.color} />
-        <button type='button' onClick={back}>
-          Close
-        </button>
-      </div>
-    </div>
-  )
-}
-
-const ModalGallery = () => (
-  <Router>
-    <Route component={ModalSwitch} />
-  </Router>
-)
-
-export default ModalGallery
+export default AuthExample

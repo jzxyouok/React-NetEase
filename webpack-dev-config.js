@@ -111,6 +111,13 @@ module.exports = {
     ]
   },
 
+  // 引入外部库
+  // 适用于一些常用且体积较大的库，充分利用CDN加速，减轻服务器负担，降低加载时间！
+  // https://webpack.js.org/configuration/externals/
+  externals:{
+    moment: 'moment'
+  },
+
   resolve: {
     modules: [
       "node_modules",
