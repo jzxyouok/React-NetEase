@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter, Link, Route} from 'react-router-dom'
+import Nav from 'app/components'
 
 const Links = () => (
   <nav>
@@ -16,7 +17,7 @@ const App = (props) => (
         path="/"
         render={({match, location}) => (
           <div>
-            <p>root</p>
+            <p>root1234</p>
             <p>{JSON.stringify(match)}</p>
             <p>{JSON.stringify(location)}</p>
             <p>{new URLSearchParams(location.search).get('id')}</p>

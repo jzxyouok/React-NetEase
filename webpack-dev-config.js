@@ -1,8 +1,8 @@
 /**
- * 开发模式下的 webpack 2.3.1 配置
+ * 开发模式下的 webpack2 配置
  * 在整个项目开发过程中，几乎99%的时间都是在这个模式下进行的
  * 注意。两种模式的配置有较大差异！！
- * webpack 2.0+官方配置地址 https://webpack.js.org/configuration/externals/
+ * webpack2 官方配置地址 https://webpack.js.org/configuration/externals/
  */
 
 const webpack = require('webpack');
@@ -128,6 +128,19 @@ module.exports = {
     extensions: [".js", ".json"],
     // 该配置项将不再要求强制转入一个空字符串，而被改动到了resolve.enforceExtension下
     // 相关文档 https://webpack.js.org/configuration/resolve/
+
+    // 路径别名, 懒癌福音
+    alias:{
+      app: path.resolve(__dirname,'src/js'),
+      // 以前你可能这样引用 import { Nav } from '../../components'
+      // 现在你可以这样引用 import { Nav } from 'app/components'
+
+      style: path.resolve(__dirname,'src/styles')
+      // 以前你可能这样引用 import "../../../styles/mixins.scss"
+      // 现在你可以这样引用 import "style/mixins.scss"
+
+      // 注意：别名只能在.js文件中使用。
+    }
   },
 
   plugins: [

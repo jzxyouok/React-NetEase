@@ -6,16 +6,19 @@ import {AppContainer as HotReloader} from 'react-hot-loader'
 import React from 'react'
 import {render} from 'react-dom'
 import {default as App} from './js/containers/App'
-import Redbox from 'redbox-react'
+import RedBox from 'redbox-react'
 
-const renderRoot = () => render(
-  <HotReloader errorReporter={Redbox}>
-    <App />
-  </HotReloader>,
-  document.getElementById('root')
-);
+if (process.env.NODE_ENV === 'development') {
+  const renderRoot = () => render(
+    <HotReloader errorReporter={RedBox}>
+      <App />
+    </HotReloader>,
+    document.getElementById('root')
+  );
+  renderRoot();
+  if (module.hot) {module.hot.accept('./js/containers/App', renderRoot);}
+} else {
+  render(<App />, document.getElementById('root'));
+}
 
-renderRoot();
 
-//---Hot Module Replacement
-if (module.hot) {module.hot.accept('./js/containers/App', renderRoot);}

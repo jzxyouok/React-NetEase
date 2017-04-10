@@ -1,9 +1,9 @@
 /**
- * 产品模式下的 webpack 2.2.1 配置
+ * 产品模式下的 webpack2 配置
  *
  * 注意。两种模式的配置有较大差异！！
  *
- * webpack 2.0+官方配置地址 https://webpack.js.org/configuration/externals/
+ * webpack2 官方配置地址 https://webpack.js.org/configuration/externals/
  */
 
 const path = require('path');
@@ -27,7 +27,7 @@ module.exports = {
   // https://webpack.js.org/configuration/target/
 
   entry: {
-    vendor: ["react", "react-dom"],
+    vendor: ["react", "react-dom", "react-router-dom"],
     app: "index.js",
   },
   // https://webpack.js.org/configuration/entry-context/
@@ -128,6 +128,19 @@ module.exports = {
     extensions: [".js", ".json"],
     // 该配置项将不再要求强制转入一个空字符串，而被改动到了resolve.enforceExtension下
     // 相关文档 https://webpack.js.org/configuration/resolve/
+
+    // 路径别名, 懒癌福音
+    alias:{
+      app: path.resolve(__dirname,'src/js'),
+      // 以前你可能这样引用 import { Nav } from '../../components'
+      // 现在你可以这样引用 import { Nav } from 'app/components'
+
+      style: path.resolve(__dirname,'src/styles')
+      // 以前你可能这样引用 import "../../../styles/mixins.scss"
+      // 现在你可以这样引用 import "style/mixins.scss"
+
+      // 注意：别名只能在.js文件中使用。
+    }
   },
 
   plugins: [
@@ -141,13 +154,9 @@ module.exports = {
     // Hash the files using MD5 so that their names change when the content changes.
 
     new webpack.optimize.UglifyJsPlugin({
-      beautify: true, // 添加适当的空格和换行
-      compress: {     // 开启代码压缩，包括DCE(dead code elimination)等
-        warnings: true,   // 当因为副作用等原因DCE失败时，会在命令行中给出警告
-        drop_console: true,   // 不用解释了吧
-      },
-      output: {comments: true},  // 保留注释，方便寻找`unused harmony`标签
-      mangle: false   // 禁用变量混淆，以方便分析
+      compress: {
+        warnings: false
+      }
     }),
     // 代码压缩
     // https://webpack.js.org/guides/migrating/#uglifyjsplugin-sourcemap
