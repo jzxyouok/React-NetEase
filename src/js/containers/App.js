@@ -1,31 +1,18 @@
 import React from 'react'
-import {BrowserRouter, Link, Route} from 'react-router-dom'
-import Nav from 'app/components'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {Wrap} from 'app/components'
+import Home from './Home'
+import Hot from './Hot'
+import Me from './Me'
 
-const Links = () => (
-  <nav>
-    <Link to="/?id=123">InLine</Link>
-    <Link to={{pathname: '/?id=456'}}>Object</Link>
-  </nav>
-)
-
-const App = (props) => (
+export default (props) => (
   <BrowserRouter>
-    <div>
-      <Links />
-      <Route
-        path="/"
-        render={({match, location}) => (
-          <div>
-            <p>root1234</p>
-            <p>{JSON.stringify(match)}</p>
-            <p>{JSON.stringify(location)}</p>
-            <p>{new URLSearchParams(location.search).get('id')}</p>
-          </div>
-        )}
-      />
-    </div>
+    <Wrap>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/hot" component={Hot} />
+        <Route path="/me" component={Me} />
+      </Switch>
+    </Wrap>
   </BrowserRouter>
 )
-
-export default App

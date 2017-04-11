@@ -14,6 +14,7 @@ $brand-important: #ff5b05;  // 用于小红点
 // ---
 // 文字色
 $color-text-base: #282828;               // 基本
+$color-text-nav: #808080;                // 导航默认色
 $color-text-base-inverse: #fff;          // 基本 - 反色
 $color-text-secondary: #a4a9b0;          // 辅助色
 $color-text-placeholder: #bbb;           // 文本框提示
@@ -27,6 +28,7 @@ $color-shadow: rgba(0, 0, 0, .21);  // 阴影色
 
 // 背景色
 $fill-base: #fff;                           // 组件默认背景
+$fill-nav: #f9f8f9;                         // 导航组件背景
 $fill-body: #f5f5f9;                        // 页面背景
 $fill-tap: #ddd;                            // 组件默认背景 - 按下
 $fill-disabled: #ddd;                       // 通用失效背景
@@ -185,3 +187,6 @@ $action-sheet-zindex: 1000; // actonsheet 会放到 popup / modal 中
 $picker-zindex: 1000;
 $popup-zindex: 999;
 $modal-zindex: 999; // modal.alert 应该最大，其他应该较小
+
+// 外层最大宽度
+$max-width: 10rem;

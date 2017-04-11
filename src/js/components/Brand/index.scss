@@ -1,0 +1,13 @@
+@import "../../../styles/var";
+
+.root {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  background: $brand-primary url("../../../images/logo2.png") center center no-repeat;
+  background-size: 0.96rem 0.44rem;
+  height: 0.9rem;
+  max-width: $max-width;
+  width: 100%;
+  display: flex;
+}

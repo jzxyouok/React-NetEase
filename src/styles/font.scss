@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'icomoon';
+  font-family: 'minooo';
   src:
-          url('../fonts/icomoon.ttf?kzznn6') format('truetype'),
-          url('../fonts/icomoon.woff?kzznn6') format('woff'),
-          url('../fonts/icomoon.svg?kzznn6#icomoon') format('svg');
+          url('../fonts/minooo.ttf?hbs27g') format('truetype'),
+          url('../fonts/minooo.woff?hbs27g') format('woff'),
+          url('../fonts/minooo.svg?hbs27g#minooo') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="i-"], [class*=" i-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: 'minooo' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -22,187 +22,52 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.i-play:before {
-  content: "\e900";
+.i-set:before {
+  content: "\e906";
 }
-.i-eye:before {
-  content: "\e000";
+.i-tag:before {
+  content: "\e907";
 }
-.i-link:before {
-  content: "\e005";
+.i-member:before {
+  content: "\e908";
 }
-.i-bell:before {
-  content: "\e006";
+.i-good:before {
+  content: "\e909";
 }
-.i-lock:before {
-  content: "\e007";
+.i-chat:before {
+  content: "\e90a";
 }
-.i-unlock:before {
-  content: "\e008";
+.i-love:before {
+  content: "\e90b";
 }
-.i-ribbon:before {
-  content: "\e009";
+.i-time:before {
+  content: "\e90c";
 }
-.i-image:before {
-  content: "\e010";
+.i-add:before {
+  content: "\e90f";
 }
-.i-signal:before {
-  content: "\e011";
+.i-home:before {
+  content: "\e912";
 }
-.i-clock:before {
-  content: "\e014";
+.i-home-active:before {
+  content: "\e913";
 }
-.i-cog:before {
-  content: "\e023";
+.i-hot:before {
+  content: "\e914";
 }
-.i-heart:before {
-  content: "\e024";
+.i-hot-active:before {
+  content: "\e915";
 }
-.i-align-left:before {
-  content: "\e027";
+.i-user:before {
+  content: "\e916";
 }
-.i-align-center:before {
-  content: "\e028";
+.i-user-active:before {
+  content: "\e917";
 }
-.i-layers:before {
-  content: "\e031";
+.i-speak:before {
+  content: "\e91b";
 }
-.i-stack:before {
-  content: "\e032";
-}
-.i-search:before {
-  content: "\e036";
-}
-.i-zoom-in:before {
-  content: "\e037";
-}
-.i-zoom-out:before {
-  content: "\e038";
-}
-.i-circle-plus:before {
-  content: "\e040";
-}
-.i-circle-minus:before {
-  content: "\e041";
-}
-.i-circle-check:before {
-  content: "\e042";
-}
-.i-circle-cross:before {
-  content: "\e043";
-}
-.i-microphone:before {
-  content: "\e048";
-}
-.i-skip-back:before {
-  content: "\e050";
-}
-.i-rewind:before {
-  content: "\e051";
-}
-.i-play2:before {
-  content: "\e052";
-}
-.i-pause:before {
-  content: "\e053";
-}
-.i-stop:before {
-  content: "\e054";
-}
-.i-fast-forward:before {
-  content: "\e055";
-}
-.i-skip-forward:before {
-  content: "\e056";
-}
-.i-shuffle:before {
-  content: "\e057";
-}
-.i-repeat:before {
-  content: "\e058";
-}
-.i-umbrella:before {
-  content: "\e060";
-}
-.i-location:before {
-  content: "\e070";
-}
-.i-head:before {
-  content: "\e074";
-}
-.i-speech-bubble:before {
-  content: "\e076";
-}
-.i-globe:before {
-  content: "\e078";
-}
-.i-box:before {
-  content: "\e079";
-}
-.i-reload:before {
-  content: "\e080";
-}
-.i-power:before {
-  content: "\e086";
-}
-.i-command:before {
-  content: "\e087";
-}
-.i-pie-graph:before {
-  content: "\e092";
-}
-.i-star:before {
-  content: "\e093";
-}
-.i-arrow-left:before {
-  content: "\e094";
-}
-.i-arrow-right:before {
-  content: "\e095";
-}
-.i-arrow-up:before {
-  content: "\e096";
-}
-.i-arrow-down:before {
-  content: "\e097";
-}
-.i-volume:before {
-  content: "\e098";
-}
-.i-mute:before {
-  content: "\e099";
-}
-.i-loader:before {
-  content: "\e105";
-}
-.i-flag:before {
-  content: "\e108";
-}
-.i-trash:before {
-  content: "\e109";
-}
-.i-maximize:before {
-  content: "\e112";
-}
-.i-minimize:before {
-  content: "\e113";
-}
-.i-plus:before {
-  content: "\e114";
-}
-.i-minus:before {
-  content: "\e115";
-}
-.i-check:before {
-  content: "\e116";
-}
-.i-cross:before {
-  content: "\e117";
-}
-.i-help:before {
-  content: "\e127";
-}
-.i-ellipsis:before {
-  content: "\e129";
+.i-label:before {
+  content: "\e91d";
 }
 
