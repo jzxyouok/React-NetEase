@@ -1,0 +1,17 @@
+@import "../../../styles/var";
+
+.link {
+  position: relative;
+  display: block;
+}
+
+.text {
+  position: absolute;
+  padding: 0.1rem;
+  background: rgba(0, 0, 0, .4);
+}
+
+.img {
+  display: block;
+  width: 100%;
+}

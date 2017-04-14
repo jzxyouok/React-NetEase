@@ -1,0 +1,195 @@
+// 重写radio样式
+.am-radio.am-radio-checked .am-radio-inner:after {
+  position: absolute;
+  z-index: 100;
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  left: 5px;
+  top: 5px;
+  background: #1abc9c;
+  border-radius: 50%;
+  border: none;
+}
+
+.am-radio-inner:before {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  background: #fff;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-radius: 50%;
+  outline: 0;
+}
+
+.am-radio-inner {
+  right: 3px;
+}
+
+// 轮播图样式
+.am-carousel-wrap-dot > span {
+  background: #dcdfde;
+}
+
+.am-carousel-wrap-dot-active > span {
+  background: #1abc9c;
+}
+
+// 表单相关
+// 边框颜色 e9e9e9
+.am-list-body {
+  border-top: 1px solid #e9e9e9
+}
+
+.am-list-body:after {
+  border-bottom: 1px solid #e9e9e9
+}
+
+.am-list-item.am-input-item:after {
+  left: 0;
+  border-bottom: 1px solid #e9e9e9
+}
+
+.am-list-item.am-input-item {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.am-list-item .am-input-label {
+  color: #333;
+  font-size: 0.28rem;
+}
+
+.am-list-item .am-input-control input {
+  font-size: 0.28rem;
+  color: #999;
+  text-align: right;
+}
+
+.am-list-item .am-input-control input::placeholder {
+  color: #ccc;
+  font-size: 0.28rem;
+}
+
+.am-list-item .am-input-label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.am-button-primary {
+  background-color: #1abc9c;
+  border: 1PX solid #1abc9c;
+}
+
+.am-button-primary.am-button-active {
+  background-color: #00a685;
+  border: 1PX solid #00a685;
+}
+
+.am-button-warning {
+  background-color: #fd5f44;
+  border: 1PX solid #fd5f44;
+}
+
+.am-button-warning.am-button-active {
+  background-color: #e7553d;
+  border: 1PX solid #e7553d;
+}
+
+.am-list-item .am-list-line {
+  padding-right: 0;
+}
+
+.am-list-item {
+  padding-left: 0;
+}
+
+.am-list-item:after {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  content: '';
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  width: 100%;
+  border-bottom: 1PX solid #e9e9e9;
+}
+
+.am-list-item:last-child:after {
+  border-bottom: none;
+}
+
+.am-list-item .am-list-line .am-list-content {
+  color: #333;
+  font-size: 0.28rem;
+}
+
+.am-list-item .am-list-line .am-list-extra {
+  color: #999;
+  font-size: 0.28rem;
+}
+
+.am-picker-popup-header .am-picker-popup-header-cancel-button, .am-picker-popup-header .am-picker-popup-header-ok-button {
+  color: #1abc9c;
+}
+
+// Video 相关样式
+.video-react-has-started .video-react-control-bar {
+  height: 0.7rem;
+}
+
+.video-react .video-react-control:before {
+  font-size: 0.3rem;
+  line-height: 0.7rem;
+}
+
+.video-react-icon-replay-10, .video-react-icon-forward-10, .video-react-vol-3 {
+  display: none !important;
+}
+
+.video-react .video-react-time-control {
+  font-size: 0.22rem;
+  line-height: 0.7rem;
+}
+
+.video-react .video-react-time-control {
+  height: 0.06rem;
+}
+
+.video-react .video-react-play-progress {
+  background: #1abc9c;
+}
+
+.video-react .video-react-play-progress:before {
+  font-size: 0.24rem;
+  color: #1abc9c;
+  top: -0.1rem;
+}
+
+.video-react.video-react-fluid, .video-react.video-react-16-9, .video-react.video-react-4-3 {
+  height: 3.36rem;
+  padding-top: 0 !important;
+}
+
+.video-react {
+  background: none;
+}
+
+/*
+.video-react-icon, .video-react .video-react-big-play-button, .video-react .video-react-mouse-display, .video-react .video-react-play-progress, .video-react .video-react-play-control, .video-react .video-react-mute-control, .video-react .video-react-volume-menu-button, .video-react .video-react-volume-level, .video-react .video-react-bezel .video-react-bezel-icon {
+  font-family: 'dudu'!important;
+}
+.video-react-icon-play-arrow:before, .video-react .video-react-big-play-button:before, .video-react .video-react-play-control:before, .video-react .video-react-bezel .video-react-bezel-icon-play:before {
+
+  content: "\e90d";
+}*/

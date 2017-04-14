@@ -11,6 +11,7 @@
   color: $color-text-nav;
   &:hover {
     color: $brand-primary;
+    text-decoration: none;
   }
 }
 
@@ -23,5 +24,5 @@
 .text {
   display: block;
   line-height: 1;
-  font-size: 0.18rem;
+  font-size: 0.24rem;
 }

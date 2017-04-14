@@ -46,7 +46,7 @@ module.exports = {
 
   module: {
     rules: [
-      {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
+      {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
         loader: 'url-loader',
@@ -65,6 +65,7 @@ module.exports = {
       },
       {
         test:/\.css$/,
+        include: /node_modules/,
         use:['style-loader','css-loader','postcss-loader']
       },
 
@@ -125,7 +126,7 @@ module.exports = {
     ],
     // 这样，webpack在查找模块时，先查找 node_modules ，如果没找到则在 src 中查找
 
-    extensions: [".js", ".json"],
+    extensions: [".web.js", ".js", ".json"],
     // 该配置项将不再要求强制转入一个空字符串，而被改动到了resolve.enforceExtension下
     // 相关文档 https://webpack.js.org/configuration/resolve/
 

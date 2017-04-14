@@ -5,6 +5,7 @@
     "stage-0"
   ],
   "plugins": [
+    ["import", { "style": "css", "libraryName": "antd-mobile" }],
     ["transform-runtime", {
       "helpers": false,
       "polyfill": false,
