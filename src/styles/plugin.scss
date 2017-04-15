@@ -1,0 +1,35 @@
+// 一些插件的样式调整
+.swipe-dots {
+  position: absolute;
+  z-index: 10;
+  right: 0.2rem;
+  bottom: 0;
+  height: 0.6rem;
+  line-height: 1.5;
+  li {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 0.2rem;
+    height: 0.2rem;
+    cursor: pointer;
+    &.slick-active button {
+      width: 0.1rem;
+      height: 0.1rem;
+      background: #fff;
+    }
+    button {
+      font-size: 0;
+      line-height: 0;
+      display: block;
+      color: transparent;
+      width: 0.06rem;
+      height: 0.06rem;
+      border-radius: 50%;
+      outline: none;
+      border: none;
+      background: rgba(255, 255, 255, .4);
+    }
+  }
+}
